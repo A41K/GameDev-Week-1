@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 155: expected ':' not found.
-    label recess
-                ^
+File "game/script.rpy", line 353: Line is indented, but the preceding scene statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    show James at center
+    ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Thu Mar 12 21:25:55 2026
+Thu Mar 12 22:17:08 2026

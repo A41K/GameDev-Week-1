@@ -1,18 +1,11 @@
-﻿## This file contains options that can be changed to customize your game.
-##
-## Lines beginning with two '#' marks are comments, and you shouldn't uncomment
-## them. Lines beginning with a single '#' mark are commented-out code, and you
-## may want to uncomment them when appropriate.
-
-
-## Basics ######################################################################
+﻿## Basics ######################################################################
 
 ## A human-readable name of the game. This is used to set the default window
 ## title, and shows up in the interface and error reports.
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Visual Novel")
+define config.name = _("A normal teenager's life")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -37,7 +30,7 @@ define gui.about = _p("""
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "VisualNovel"
+define build.name = "Life is Strange"
 
 
 ## Sounds and music ############################################################
@@ -128,21 +121,6 @@ default preferences.text_cps = 0
 
 default preferences.afm_time = 15
 
-
-## Save directory ##############################################################
-##
-## Controls the platform-specific place Ren'Py will place the save files for
-## this game. The save files will be placed in:
-##
-## Windows: %APPDATA\RenPy\<config.save_directory>
-##
-## Macintosh: $HOME/Library/RenPy/<config.save_directory>
-##
-## Linux: $HOME/.renpy/<config.save_directory>
-##
-## This generally should not be changed, and if it is, should always be a
-## literal string, not an expression.
-
 define config.save_directory = "VisualNovel-1772474136"
 
 
@@ -158,25 +136,6 @@ define config.window_icon = "gui/window_icon.png"
 ## This section controls how Ren'Py turns your project into distribution files.
 
 init python:
-
-    ## The following functions take file patterns. File patterns are case-
-    ## insensitive, and matched against the path relative to the base directory,
-    ## with and without a leading /. If multiple patterns match, the first is
-    ## used.
-    ##
-    ## In a pattern:
-    ##
-    ## / is the directory separator.
-    ##
-    ## * matches all characters, except the directory separator.
-    ##
-    ## ** matches all characters, including the directory separator.
-    ##
-    ## For example, "*.txt" matches txt files in the base directory, "game/
-    ## **.ogg" matches ogg files in the game directory or any of its
-    ## subdirectories, and "**.psd" matches psd files anywhere in the project.
-
-    ## Classify files as None to exclude them from the built distributions.
 
     build.classify('**~', None)
     build.classify('**.bak', None)
@@ -206,4 +165,4 @@ init python:
 ## The username and project name associated with an itch.io project, separated
 ## by a slash.
 
-# define build.itch_project = "renpytom/test-project"
+define build.itch_project = "renpytom/Visual-Novel"

@@ -380,8 +380,11 @@ screen main_menu():
 style main_menu_frame is empty
 style main_menu_vbox is vbox
 style main_menu_text is gui_text
-style main_menu_title is main_menu_text
-style main_menu_version is main_menu_text
+style main_menu_title is main_menu_text:
+    color "#000000"
+
+style main_menu_version is main_menu_text:
+    color "#000000"
 
 style main_menu_frame:
     xsize 420
@@ -566,6 +569,11 @@ screen about():
                 text "[gui.about!t]\n"
 
             text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+
+            null height 20
+
+            label "Gratitude"
+            text _("Thank you for playing this. I really had a lot of fun making this project. I've been interested in making a renpy project before. So this was great timing")
 
 
 style about_label is gui_label

@@ -87,8 +87,8 @@ define gui.title_text_size = 75
 ## Main and Game Menus #########################################################
 
 ## The images used for the main and game menus.
-define gui.main_menu_background = "gui/main_menu.png"
-define gui.game_menu_background = "gui/game_menu.png"
+define gui.main_menu_background = Transform("images/MENUBg.webp", zoom=1, align=(0.5, 0.5))
+define gui.game_menu_background = Transform("images/MENUBg.webp", zoom=1, align=(0.5, 0.5))
 
 
 ## Dialogue ####################################################################
