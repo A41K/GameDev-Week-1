@@ -1,10 +1,11 @@
 ﻿define Abigel = Character("Abigel", color="#f5ff69")
 define James = Character("James", color="#69f5ff")
-define N = Character("Narator", color="#808080")
+define N = Character("Narrator", color="#808080")
 define timeskip = Character("TIMESKIP", color="#ff69f5")
 define Bird = Character("Bird", color="#69ff69")
 
 default progression_points = 0
+default love = 0
 
 image nroom:
     "images/narator_room.webp"
@@ -44,20 +45,35 @@ image park:
 
 image dohi:
     "images/bgdohi2.jpg"
+    zoom 1
 
 image dorm:
     "images/dorm.jpg"
-    zoom 0.75
+    zoom 2
 
 image party:
     "images/bgpeaches.png"
+    zoom 1
 
 image night:
     "images/night.jpg"
+    zoom 1
 
 image bird:
-    "images/bird.png"
-    zoom 0.5
+    "images/Bird.jpg"
+    zoom 1
+
+image campus:
+    "images/campus.jpg"
+    zoom 1
+
+image library:
+    "images/library.avif"
+    zoom 1
+
+image cafeteria:
+    "images/cafeteria.jpg"
+    zoom 1
 
 
 
@@ -101,6 +117,8 @@ label start:
 
     Bird "*Tweet tweet Chirp Chirp Tweet*"
     Abigel "See? Even the birds are happier when we're here."
+
+    hide bird
     
     menu:
         "What should you say?"
@@ -111,7 +129,6 @@ label start:
         "Yeah, you're right. I feel it too.":
             jump yes
 
-    hide bird
 
     label maybe:
         show james happy at truecenter
@@ -395,8 +412,8 @@ label dorm:
         "What do you want to do?"
         "Sure, that sounds great!":
             N "You agreed to hang out with Ashley later."
+            $ love += 1
             jump withashley
-            $ progression_points += 1
 
         "Sorry, I already have plans. Maybe another time?":
             N "You declined Ashley's invitation to hang out."
@@ -470,7 +487,7 @@ label party:
     hide Ashley
 
     N "You helped Ashley walk back to your dorm and then you both went to sleep"
-
+    $ love += 1
     jump options
     
     
@@ -513,17 +530,164 @@ label dorm2:
 
     jump options
 
+default activity = 0
+
 label options:
     
     timeskip "CHAPTER 2 - The Options"
         
-    if progression_points >= 1:
-        N "You woke up with Ashley being next to you. You had a great time last night, but you couldn't help but feel guilty about it. You had just started talking to Abigel and you really liked her, but you also had a great time with Ashley"
+    if love >= 1:
+
+        scene dorm
+        N "You woke up with Ashley being next to you. You had a great time last night, but you couldn't help but feel guilty about it."
+        menu bed:
+            "Do you want to get up?"
+            "Yes":
+                N "You decided to get up and go out to run as you usually do these mornings"
+                scene campus
+                $ activity += 1
+                N "After running for an hour it was 7:40. You have class at 8 so you go to class "
+                James "I really outran myself today"
+                James "I better get to class fast"
+                jump mornclass
+            "No":
+                scene dorm
+                N "You decided to lay in bed and ponder about your choices"
+                James "Did I really do the right decision?"
+                N "As you thought this you looked at your phone and it said"
+                Phone "7:03"
+                N "You have class in an hour so you get up"
+                jump mornclass 
+            
     else:
         N "Abigel had shocked you with her confession, but you couldn't help but feel happy that she felt that way about you."
+        
+        scene dorm
 
+        N "Now you are both having breakfast together talking about your plans for today "
+        
+        show James at truecenter
+        James "Sooo any plans for today?"
+        hide James
 
+        show Abigel at truecenter
+        Abigel "I was thinking we could go to the library and study together?"
+        hide Abigel
+        
+        show James at truecenter
+        James "That sounds like a great idea, I'm down for that."
+        James "I really want to do well in this class and I know that studying together will help us both out."
+        hide James
 
+        show Abigel at truecenter
+        Abigel "Yeah, I agree. We can help each other out and make sure we both do well in the class."
+        hide Abigel
+        
+        N "You both finished breakfast and then headed to the library together to study for your classes."
+
+        jump library
+
+label mornclass:
+
+    scene school
+    
+    N "You barely made it to class on time, but you still managed to get there before the teacher started the lesson."
+    N "You sat down next to Ashley."
+    
+    show Ashley at truecenter
+    Ashley "Hey James, good to see you here."
+    hide Ashley
+
+    show James at truecenter
+    James "Hey Ashley, good to see you too. I had a great time last night"
+    James "Yeah, me too. I just didn't want to miss out on the fun we had yesterday."
+    hide James
+
+    show Ashley at truecenter
+    Ashley "I know, right? It was so much fun. I'm glad we got to spend time together like that."
+    hide Ashley
+
+    N "Abigel looked at you with a disappointed look on her face."
+    N "She was really upset that you went out with Ashley instead of hanging out with her. She thought that you would choose her over Ashley, but you didn't."
+
+    jump ch3
+
+label library:
+    scene library
+    N "You went to the library to study"
+    N "You and Abigel studied together for a few hours, going over the material and helping each other out with any questions you had."
+
+    show Abigel at truecenter
+    Abigel "Soooo what do you want to do after this?"
+    hide Abigel
+
+    menu Hmmm:
+        "What do you want to do after studying?"
+        "Go to the campus":
+            N "You decided to go to the campus and spend some time together outside."
+            jump campus
+        "Go to the cafeteria":
+            N "You decided to go to the cafeteria and grab some food together."
+            jump cafeteria
+
+label cafeteria:
+
+    scene cafeteria
+    N "You went to the cafeteria and got some food together."
+    N "You sat down together and talked about your plans for the weekend and what you wanted to do together."
+
+    show Abigel at truecenter
+    Abigel "I was thinking maybe we could go to the beach this weekend? It's supposed to be really nice out and I think it would be a lot of fun."
+    hide Abigel
+
+    show James at truecenter
+    James "That sounds like a great idea, I'm down for that. I love the beach and I think it would be a lot of fun to spend the day there together."
+    hide James
+
+    show Abigel at truecenter
+    Abigel "Yeah, I agree. We can go swimming, play some beach games, and just relax together. It will be a great way to spend the day."
+    hide Abigel
+
+    jump ch3
+
+label campus:
+
+    scene campus
+
+    N "You went to the campus and spent some time together outside."
+    N "You walked around the campus, enjoying the nice weather and each other's company. You talked about your plans for the weekend and what you wanted to do together."
+
+    show Abigel at truecenter
+    Abigel "Y'know it's so peacful right now"
+    hide Abigel
+
+    show James at truecenter
+    James "Yeah, it really is. I'm glad we decided to come here together."
+    hide James
+
+    N "You both sat down under a tree. Abigel rested her head on your shoulder and you both just enjoyed the moment together."
+
+    show Abigel at truecenter
+    Abigel "I really like spending time with you James. I feel like we have a really strong connection and I just enjoy being around you."
+    hide Abigel
+
+    show James at truecenter
+    James "I feel the same way, Abigel. I really like spending time with you too. I think we have a really strong connection and I just enjoy being around you as well."
+    hide James
+
+    jump ch3
+
+label ch3:
+
+    timeskip "CHAPTER 3 - Decisions have consequences"
+
+    if love >= 1:
+        N "You choose Ashley over Abigel and now you have to deal with the consequences of your actions."
+        N "Abigel is really upset with you and she doesn't want to talk to you anymore. She feels like you betrayed her and that you don't care about her feelings."
+    
+    else:
+        N "You choose Abigel over Ashley and now you have to deal with the consequences of your actions."
+        N "Ashley is really upset with you and she doesn't want to talk to you anymore. She feels like you betrayed her and that you don't care about her feelings."
 
 
 
