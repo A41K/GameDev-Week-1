@@ -16,24 +16,24 @@ image outside:
     zoom 3
 
 image abigel happy:
-    "images/Abigel.webp"
-    zoom 0.5
+    "images/Abigel.png"
+    zoom 1
 
 image james happy:
-    "images/James.jpg"
+    "images/James.png"
     zoom 1
 
 image James:
-    "images/James.jpg"
+    "images/James.png"
     zoom 1
 
 image Abigel:
-    "images/Abigel.webp"
-    zoom 1.5
+    "images/Abigel.png"
+    zoom 1
 
 image bird:
     "images/bird.png"
-    zoom 0.5
+    zoom 1
 
 image school:
     "images/school.jpg"
@@ -75,18 +75,42 @@ image cafeteria:
     "images/cafeteria.jpg"
     zoom 1
 
+image ch1:
+    "images/ch1.png"
+    zoom 1
+
+image ch2:
+    "images/ch2.png"
+    zoom 1
+
+image ch3:
+    "images/ch3.png"
+    zoom 1
+
+image end:
+    "images/END.png"
+    zoom 1
+
+
+
 
 
 label start:
     scene nroom
 
+    
     timeskip "PRELUDE - The Park"
 
     N "There was once a beautiful time in a beautiful place. two people who seem far away started closing in the distance"
 
     N "You could feel the spark in their eyes. It could light a whole forest on fire, but it wasn't always like that"
 
+    scene ch1
+    with fade
+    pause
+    
     scene outside
+    with fade
 
     show james happy at truecenter
 
@@ -187,8 +211,13 @@ label start:
 
 
 label school:
-    
+
+    scene ch2
+    with fade
+    pause
+
     scene school
+    with fade
 
     timeskip "CHAPTER 1 - School"
 
@@ -214,20 +243,20 @@ define Teacher = Character("Teacher", color="#ff69f5")
 define Phone = Character("Phone", color="#f5ff69")
 
 image Frank:
-    "images/Frank.jpg"
-    zoom 0.5
+    "images/Frank.png"
+    zoom 1
 
 image Ashley:
-    "images/Ashley.webp"
-    zoom 0.5
+    "images/Ashley.png"
+    zoom 1
 
 image Kane:
-    "images/Kane.jpg"
-    zoom 0.5
+    "images/Kane.png"
+    zoom 1
 
 image Teacher:
-    "images/Teacher.jpg"
-    zoom 0.5
+    "images/Teacher.png"
+    zoom 1
 
 label recess:
 
@@ -315,26 +344,37 @@ label Store:
         scene dohi
 
         show Frank at truecenter
+
         Frank "So, we want 4 packs and then some alcohol right?"
+        
         hide Frank
 
         show Ashley at truecenter
+
         Ashley "Yeah, that's right. We also want some snacks for the weekend"
+        
         hide Ashley
 
         show Kane at truecenter
+
         Kane "Don't forget the alcohol, we need that for sure"
+        
         hide Kane
 
         N "You guys bought 4 packs of ZYN two bottles of whiskey and some snacks"
 
         show James at truecenter
+
         James "This round is on me"
+        
         hide James
 
         show Frank at truecenter
+
         Frank "Nah you bought last time so it's my turn to buy"
+        
         hide Frank
+        
         jump teacher
 
 label teacher:
@@ -462,15 +502,21 @@ label party:
     N "And then as the night whent on you both got more and more tipsy"
 
     show Ashley at truecenter
+    
     Ashley "Jamesssss I love youuuuu"
+    
     hide Ashley 
 
     show James at truecenter
+    
     James "You're just drunk Ashley, you don't know what you're saying"
+    
     hide James
 
     show Ashley at truecenter
+    
     Ashley "Immmm haviiiinngg sooo muuchh fuuunn"
+    
     hide Ashley
 
     N "You both continued partying, drinking and dancing"
@@ -479,15 +525,21 @@ label party:
     scene night
 
     show James at truecenter
+    
     James "Grab on me."
+    
     hide James
 
     show Ashley at truecenter
+    
     Ashley "Okay, I'm really tired and I don't think I can walk on my own."
+    
     hide Ashley
 
     N "You helped Ashley walk back to your dorm and then you both went to sleep"
+    
     $ love += 1
+    
     jump options
     
     
@@ -536,9 +588,14 @@ label options:
     
     timeskip "CHAPTER 2 - The Options"
         
+    scene ch3
+    with fade
+    pause
+
     if love >= 1:
 
         scene dorm
+        with fade
         N "You woke up with Ashley being next to you. You had a great time last night, but you couldn't help but feel guilty about it."
         menu bed:
             "Do you want to get up?"
@@ -567,20 +624,29 @@ label options:
         N "Now you are both having breakfast together talking about your plans for today "
         
         show James at truecenter
+        
         James "Sooo any plans for today?"
+        
         hide James
 
         show Abigel at truecenter
+        
         Abigel "I was thinking we could go to the library and study together?"
+        
         hide Abigel
         
         show James at truecenter
+        
         James "That sounds like a great idea, I'm down for that."
+        
         James "I really want to do well in this class and I know that studying together will help us both out."
+        
         hide James
 
         show Abigel at truecenter
+        
         Abigel "Yeah, I agree. We can help each other out and make sure we both do well in the class."
+        
         hide Abigel
         
         N "You both finished breakfast and then headed to the library together to study for your classes."
@@ -590,21 +656,28 @@ label options:
 label mornclass:
 
     scene school
-    
+
     N "You barely made it to class on time, but you still managed to get there before the teacher started the lesson."
     N "You sat down next to Ashley."
     
     show Ashley at truecenter
+    
     Ashley "Hey James, good to see you here."
+    
     hide Ashley
 
     show James at truecenter
+    
     James "Hey Ashley, good to see you too. I had a great time last night"
+    
     James "Yeah, me too. I just didn't want to miss out on the fun we had yesterday."
+    
     hide James
 
     show Ashley at truecenter
+    
     Ashley "I know, right? It was so much fun. I'm glad we got to spend time together like that."
+    
     hide Ashley
 
     N "Abigel looked at you with a disappointed look on her face."
@@ -618,7 +691,9 @@ label library:
     N "You and Abigel studied together for a few hours, going over the material and helping each other out with any questions you had."
 
     show Abigel at truecenter
+    
     Abigel "Soooo what do you want to do after this?"
+    
     hide Abigel
 
     menu Hmmm:
@@ -637,15 +712,21 @@ label cafeteria:
     N "You sat down together and talked about your plans for the weekend and what you wanted to do together."
 
     show Abigel at truecenter
+    
     Abigel "I was thinking maybe we could go to the beach this weekend? It's supposed to be really nice out and I think it would be a lot of fun."
+    
     hide Abigel
 
     show James at truecenter
+    
     James "That sounds like a great idea, I'm down for that. I love the beach and I think it would be a lot of fun to spend the day there together."
+    
     hide James
 
     show Abigel at truecenter
+    
     Abigel "Yeah, I agree. We can go swimming, play some beach games, and just relax together. It will be a great way to spend the day."
+    
     hide Abigel
 
     jump ch3
@@ -658,21 +739,29 @@ label campus:
     N "You walked around the campus, enjoying the nice weather and each other's company. You talked about your plans for the weekend and what you wanted to do together."
 
     show Abigel at truecenter
+    
     Abigel "Y'know it's so peacful right now"
+    
     hide Abigel
 
     show James at truecenter
+    
     James "Yeah, it really is. I'm glad we decided to come here together."
+    
     hide James
 
     N "You both sat down under a tree. Abigel rested her head on your shoulder and you both just enjoyed the moment together."
 
     show Abigel at truecenter
+    
     Abigel "I really like spending time with you James. I feel like we have a really strong connection and I just enjoy being around you."
+    
     hide Abigel
 
     show James at truecenter
+    
     James "I feel the same way, Abigel. I really like spending time with you too. I think we have a really strong connection and I just enjoy being around you as well."
+    
     hide James
 
     jump ch3
@@ -688,6 +777,13 @@ label ch3:
     else:
         N "You choose Abigel over Ashley and now you have to deal with the consequences of your actions."
         N "Ashley is really upset with you and she doesn't want to talk to you anymore. She feels like you betrayed her and that you don't care about her feelings."
+
+
+    timeskip "THE END (FOR NOW)"
+
+    scene end
+    with fade
+    pause
 
 
 
